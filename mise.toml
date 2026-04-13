@@ -1,0 +1,28 @@
+[env]
+# Set environment variables if needed
+# DATABASE_URL = "sqlite:///./test.db"
+
+[tasks.install]
+description = "Install backend and frontend dependencies"
+run = [ "uv sync --directory backend", "bun install --cwd frontend" ]
+
+[tasks.dev-backend]
+description = "Start FastAPI backend"
+run = "cd backend && uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+
+[tasks.dev-frontend]
+description = "Start React frontend"
+run = "cd frontend && npm run dev"
+
+[tasks.dev]
+description = "Start both backend and frontend"
+# Ensure concurrently is installed locally in frontend or use npx
+run = "npx concurrently --kill-others-on-fail -n 'BACKEND,FRONTEND' -c 'blue,green' 'mise run dev-backend' 'mise run dev-frontend'"
+
+[tasks.test]
+description = "Run all tests"
+run = [ "uv run pytest --directory backend", "npm test --prefix frontend" ]
+
+[tasks.lint]
+description = "Lint both projects"
+run = [ "uv run ruff check backend", "npm run lint --prefix frontend" ]

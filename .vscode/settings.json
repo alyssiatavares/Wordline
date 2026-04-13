@@ -1,0 +1,28 @@
+  {
+    // --- Python Configuration ---
+    // Tell the Python extension where the interpreter/env is
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+    // Tell Pylance/Pyright where to find imports if you have shared code
+    "python.analysis.extraPaths": [
+      "${workspaceFolder}/backend"
+    ],
+    "ruff.enable": true,
+    "ruff.configurationPreference": "filesystemFirst",
+    "python.analysis.typeCheckingMode": "standard",
+    // --- JavaScript/TypeScript Configuration ---
+    // If using TypeScript, point to the frontend tsconfig
+    "js/ts.tsdk.path": "frontend/node_modules/typescript/lib",
+    // --- Formatting & Linting ---
+    // Use specific formatters for each language
+    "[python]": {
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.formatOnSave": true,
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    // --- Terminal ---
+    // Default to bash/zsh, but you can set up tasks to cd automatically
+    "terminal.integrated.cwd": "${workspaceFolder}"
+  }

@@ -1,0 +1,15 @@
+:80 {
+    # 1. API Handle Block
+    # This block ONLY runs if the path starts with /api/
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    # 2. Frontend Handle Block
+    # This block runs for EVERYTHING ELSE
+    handle {
+        root * /usr/share/caddy
+        file_server
+        try_files {path} /index.html
+    }
+}
