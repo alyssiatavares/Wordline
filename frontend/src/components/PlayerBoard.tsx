@@ -26,7 +26,7 @@ export const PlayerBoard = ({ playerNumber, color }: PlayerBoardProps) => {
            </span>
         </div>
         
-        {/* Grid de Letras Placeholder */}
+        {/* Letter Grid Placeholder */}
         <div className="grid grid-cols-5 gap-3">
           {Array.from({ length: 30 }).map((_, i) => (
             <div 
